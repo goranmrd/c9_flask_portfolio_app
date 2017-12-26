@@ -45,19 +45,15 @@ def shopping_list_post():
     elif request.method == 'POST':
           print(request.form['text'].split())
           
-          shop_list = []
-          try:
-            for item in request.form['text'].split():
-              
-              shop_list.append(item)
-
-              
-              
-            return render_template('shopping_list.html', result="\n".join([str(item) for item in shop_list]))
-          except ValueError:
-            return "Easy now! Let's keep it simple! Just words with a space between them"
+          meters=0
           
-  	      
+      try:
+	value = float(request.form['text'])
+	meters.set((0.3048 * value * 10000.0 + 0.5) / 10000.0)
+	return render_template('shopping_list.html', result=meters))
+      except ValueError:
+	pass
+     	return render_template('shopping_list.html', result=meters))
 @app.route('/time', methods=['GET','POST'])
 def time_post():
     # --> ['5', '6', '8']
