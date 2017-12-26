@@ -48,7 +48,7 @@ def shopping_list_post():
       try:
 	value = float(request.form['text'])
 	meters.set((0.3048 * value * 10000.0 + 0.5) / 10000.0)
-	return render_template('shopping_list.html', result=meters))
+	return render_template('shopping_list.html', result=str(meters)))
       except ValueError:
         pass
 @app.route('/time', methods=['GET','POST'])
