@@ -3,6 +3,7 @@ import datetime
 import pytz # timezone 
 import requests
 import os
+import random
 
 
 
@@ -37,9 +38,6 @@ def add_numbers_post():
 
 @app.route('/converter', methods=['GET','POST'])
 def converter_post():
-	  # --> ['5', '6', '8']
-	  # print(type(request.form['text']))
-
           if request.method == 'GET':
               return render_template('converter.html')
           elif request.method == 'POST':
@@ -49,7 +47,21 @@ def converter_post():
                 meters = (0.3048 * value * 10000.0 + 0.5) / 10000.0
                 return render_template('converter.html', result=str(meters))
               except ValueError:
-                pass
+                print("Please enter numbers only")
+
+@app.route('/pass_gen', methods=['GET','POST'])
+def pass_gen_post():
+          if request.method == 'GET':
+              return render_template('pass_gen.html')
+          elif request.method == 'POST':
+              try:
+                value = int(request.form['text'])
+                chars = "abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()?"
+                passwd = "".join(random.sample(chars, value))
+                return render_template('pass_gen.html', result=str(passwd))
+              except ValueError:
+                print("Please enter numbers only")
+                
 @app.route('/time', methods=['GET','POST'])
 def time_post():
     # --> ['5', '6', '8']
@@ -78,7 +90,9 @@ def python_apps_page():
 
 @app.route('/M_Learning')
 def machine_learning_page():
+	# testing stuff
 	return render_template('M_Learning.html')
+
 
 @app.route('/contact')
 def contact():
