@@ -1,6 +1,6 @@
 {% extends "index.html" %} 
 
-{% block title %}Shopping List{% endblock %}
+{% block title %}Passwords Generator{% endblock %}
 
 {% block content %}
 
@@ -11,7 +11,7 @@
                     <div class="intro-text">
                         <h1 class="name"></h1>
                         <hr class="star-light">
-                        <span class="skills">Generate password!</span>
+                        <span class="skills">Generate passwords!</span>
                     </div>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Password generator</h2>
+                    <h2>Passwords generator</h2>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -36,6 +36,7 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="name">Start Converting</label>
+								<input type="text" name="number" class="form-control" placeholder="Enter Number of Passwords" name="my-form" id="name" required data-validation-required-message="Please enter your name.">
                                 <input type="text" name="text" class="form-control" placeholder="Enter Password Length" name="my-form" id="name" required data-validation-required-message="Please enter your name.">
                                 <p class="help-block text-danger"></p>
                             </div>
@@ -48,13 +49,29 @@
                                 <button type="submit" class="btn btn-success btn-lg">Generate</button>
                               </div>  
                             </div>
-                            <div class="row">
-                    <div class="col-lg-12 text-center">
-                    <p style="font-size:30px">YOUR PASSWORD = {{result}}</p>
-                    <hr class="star-primary">
-                </div>    
-                    </form>
-        </div>
+                        <div class="row">
+							<div class="col-lg-6 text-right">
+					
+								<p style="font-size:25px">YOUR PASSWORDS = <p>
+   
+							</div>
+					<div class="col-lg-6 text-left-side">
+					
+                    
+						<table style="font-size:25px">
+							{% for i in result %}
+							<tr>
+								<td> {{ i }} </td>
+							</tr>
+							{% endfor %}
+						</table>
+					</div>
+					<div class="col-lg-12 text-center">
+						<hr class="star-primary">
+					</div>	
+                </form>
+					
+				</div>
     </div>
 </section>
 {% endblock %}
