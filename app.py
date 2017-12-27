@@ -36,7 +36,7 @@ def add_numbers_post():
 
 
 @app.route('/converter', methods=['GET','POST'])
-def shopping_list_post():
+def converter_post():
 	  # --> ['5', '6', '8']
 	  # print(type(request.form['text']))
 
