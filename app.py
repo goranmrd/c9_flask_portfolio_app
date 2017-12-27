@@ -43,10 +43,10 @@ def shopping_list_post():
           if request.method == 'GET':
               return render_template('shopping_list.html')
           elif request.method == 'POST':
-              meters=0
+              meters = 0.0
               try:
                 value = float(request.form['text'])                                     
-                meters.set((0.3048 * value * 10000.0 + 0.5) / 10000.0)
+                meters = (0.3048 * value * 10000.0 + 0.5) / 10000.0
                 return render_template('shopping_list.html', result=str(meters))
               except ValueError:
                 pass
