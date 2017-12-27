@@ -56,14 +56,21 @@ def pass_gen_post():
           elif request.method == 'POST':
               nums = []
               try:
+                names = ''
                 number = int(request.form['number'])
+                if number == 1:
+                  names = 'YOUR PASSWORD ='
+                elif number == 0:
+                  names = 'PLEASE ENTER NUMBER >= 1'
+                else:
+                  names = 'YOUR PASSWORDS ='
                 value = int(request.form['text'])
                 chars = "abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()?"
                 
                 for i in range(number):
                   passwd = "".join(random.sample(chars, value))
                   nums.append(passwd)
-                return render_template('pass_gen.html', result=nums)
+                return render_template('pass_gen.html', result=nums, names=names)
               except ValueError:
                 print("Please enter numbers only")
                 
