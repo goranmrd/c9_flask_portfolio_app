@@ -45,7 +45,7 @@ def converter_post():
               try:
                 value = float(request.form['text'])                                     
                 meters = (0.3048 * value * 10000.0 + 0.5) / 10000.0
-                return render_template('converter.html', result=str(meters))
+                return render_template('converter.html', result=str('{:0.4f}'.format(meters)))
               except ValueError:
                 print("Please enter numbers only")
 
