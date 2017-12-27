@@ -76,6 +76,9 @@ def python_apps_page():
 	# testing stuff
 	return render_template('python_apps.html')
 
+@app.route('/M_Learning')
+def machine_learning_page():
+	return render_template('M_Learning.html')
 
 @app.route('/contact')
 def contact():
