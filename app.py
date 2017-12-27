@@ -35,19 +35,19 @@ def add_numbers_post():
   	      	return "Easy now! Let's keep it simple! 2 numbers with a space between them please"
 
 
-@app.route('/shopping_list', methods=['GET','POST'])
+@app.route('/converter', methods=['GET','POST'])
 def shopping_list_post():
 	  # --> ['5', '6', '8']
 	  # print(type(request.form['text']))
 
           if request.method == 'GET':
-              return render_template('shopping_list.html')
+              return render_template('converter.html')
           elif request.method == 'POST':
               meters = 0.0
               try:
                 value = float(request.form['text'])                                     
                 meters = (0.3048 * value * 10000.0 + 0.5) / 10000.0
-                return render_template('shopping_list.html', result=str(meters))
+                return render_template('converter.html', result=str(meters))
               except ValueError:
                 pass
 @app.route('/time', methods=['GET','POST'])
