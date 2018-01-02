@@ -58,7 +58,7 @@ def shopping_list_post():
             return render_template('shopping_list.html', result="\n".join([str(item) for item in shop_list]))
           except ValueError:
             return "Easy now! Let's keep it simple! Just words with a space between them"
-'''          
+         
 @app.route('/piglatin', methods=['GET','POST'])
 def pig_latin_post():
           if request.method == 'GET':
@@ -103,7 +103,7 @@ def pig_latin_post():
 				     print(finalword)
 
 				     return render_template('piglatin.html', result=finalword)
-'''
+
 @app.route('/time', methods=['GET','POST'])
 def time_post():
     # --> ['5', '6', '8']
