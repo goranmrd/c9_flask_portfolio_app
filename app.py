@@ -96,9 +96,9 @@ def time_post():
 @app.route("/simple.png")
 def simple():
     import datetime
-    import StringIO
+    from io import StringIO
     import random
-
+    from flask import make_response
     from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
     from matplotlib.figure import Figure
     from matplotlib.dates import DateFormatter
@@ -117,7 +117,7 @@ def simple():
     ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
     fig.autofmt_xdate()
     canvas=FigureCanvas(fig)
-    png_output = StringIO.StringIO()
+    png_output = StringIO()
     canvas.print_png(png_output)
     response=make_response(png_output.getvalue())
     response.headers['Content-Type'] = 'image/png'
