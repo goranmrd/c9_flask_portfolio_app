@@ -33,4 +33,5 @@ WTForms==2.1
 dj-database-url==0.4.1
 psycopg2==2.6.2
 whitenoise==2.0.6
-
+matplotlib==2.1.1
+prettyplotlib==0.1.7
