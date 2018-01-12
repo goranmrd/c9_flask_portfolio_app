@@ -97,7 +97,7 @@ def time_post():
               
             return render_template('time.html', result=answer)
 
-@app.route('/fig')
+@app.route('/fig/')
 def fig():
     fig, ax = plt.subplots(1)
     ppl.bar(ax, np.arange(10), np.abs(np.random.randn(10)))
@@ -108,7 +108,7 @@ def fig():
     return send_file(img, mimetype='image/png')
 
 
-@app.route('/image')
+@app.route('/image/')
 def images():
     return render_template("image.html")
 
