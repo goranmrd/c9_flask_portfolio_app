@@ -1,10 +1,14 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, send_file
 import datetime
 import pytz # timezone 
 import requests
 import os
 import random
-
+from io import BytesIO
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+import numpy as np
+import prettyplotlib as ppl
+import matplotlib.pyplot as plt
 
 
 app = Flask(__name__)
@@ -93,35 +97,21 @@ def time_post():
               
             return render_template('time.html', result=answer)
 
-@app.route("/simple.png")
-def simple():
-    import datetime
-    from io import StringIO
-    import random
-    from flask import make_response
-    from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-    from matplotlib.figure import Figure
-    from matplotlib.dates import DateFormatter
+@app.route('/fig/')
+def fig():
+    fig, ax = plt.subplots(1)
+    ppl.bar(ax, np.arange(10), np.abs(np.random.randn(10)))
+    canvas = FigureCanvas(fig)
+    img = BytesIO()
+    fig.savefig(img)
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
 
-    fig=Figure()
-    ax=fig.add_subplot(111)
-    x=[]
-    y=[]
-    now=datetime.datetime.now()
-    delta=datetime.timedelta(days=1)
-    for i in range(10):
-        x.append(now)
-        now+=delta
-        y.append(random.randint(0, 1000))
-    ax.plot_date(x, y, '-')
-    ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
-    fig.autofmt_xdate()
-    canvas=FigureCanvas(fig)
-    png_output = StringIO()
-    canvas.print_png(png_output)
-    response=make_response(png_output.getvalue())
-    response.headers['Content-Type'] = 'image/png'
-    return response       
+
+@app.route('/image/')
+def images():
+    return render_template("image.html")
+
 
 @app.route('/python_apps')
 def python_apps_page():
