@@ -5,6 +5,8 @@ import requests
 import os
 import random
 from io import BytesIO
+import matplotlib
+matplotlib.use('Agg')
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 import numpy as np
 import prettyplotlib as ppl
