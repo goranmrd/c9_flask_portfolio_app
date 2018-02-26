@@ -1,5 +1,5 @@
 <script>
-			var canvas = document.getElementById('canvas')
+			var canvas = document.getElementById('goran')
 			  , context = canvas.getContext('2d')
 			  , img = new Image()
 			  , w
