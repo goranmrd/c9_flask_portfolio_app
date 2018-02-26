@@ -1,5 +1,5 @@
 <script>
-			var canvas = document.getElementById('goran')
+			var canvas = document.getElementById('col-lg-12')
 			  , context = canvas.getContext('2d')
 			  , img = new Image()
 			  , w
